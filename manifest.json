@@ -1,0 +1,20 @@
+{
+    "name": "TacTic-Toe",
+    "short_name": "TacTic-Toe",
+    "start_url": ".",
+    "background_color": "#F5DFFF",
+    "theme_color": "#DEAADC",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "assets/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/logo512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
