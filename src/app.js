@@ -221,7 +221,7 @@ function checkVictory() {
 function displayWinner() {
   let winner = currentTurnP1 ? "One" : "Two";
   winnerBanner.classList.remove("hide-text");
-  winnerBanner.innerHTML = "Player " + winner + " is the winner!!";
+  winnerBanner.innerHTML = "Player " + winner + " is the winner!";
   
   let crownWinner = currentTurnP1 ? "p1-win" : "p2-win";
   crownIcon.classList.add(crownWinner);

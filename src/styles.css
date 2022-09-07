@@ -206,11 +206,11 @@ main {
   /* top: 12px; */
 }
 
-.p1-turn{
+.p1-turn {
   left: 25%;
 }
 
-.p2-turn{
+.p2-turn {
   left: 70%;
 }
 
@@ -303,11 +303,13 @@ main {
 
 .doodles {
   max-width: 1400px;
+  width: 80%;
+  margin: 0 auto;
 }
 
-#doodleO {
+#doodleO-Old {
   position: absolute;
-  height: fit-content ;
+  height: fit-content;
   font-size: 25rem;
   top: 77px;
   color: rgba(249, 145, 145, 0.4);
@@ -315,22 +317,52 @@ main {
   left: -100px;
   bottom: 10px;
   z-index: -999;
-
+  overflow-x: hidden !important;
   /* animation: jiggleO 2s infinite linear alternate-reverse 0s; */
+}
+
+#doodleX-Old {
+  position: absolute;
+  font-size: 25rem;
+  top: 0px;
+  color: rgba(135, 208, 223, 0.35);
+  transform: rotate(15deg);
+  right: -60px;
+  top: -23rem;
+  z-index: -999;
+  overflow-x: hidden !important;
+  /* animation: jiggleX 1s infinite linear alternate-reverse 0.2s; */
 }
 
 #doodleX {
   position: absolute;
-  font-size: 25rem;
-  top: 77px;
-  color: rgba(135, 208, 223, 0.35);
-  transform: rotate(15deg);
-  right: -60px;
-  top: -13rem;
-  z-index: -999;
-  
-  /* animation: jiggleX 1s infinite linear alternate-reverse 0.2s; */
+  background-image: url("../assets/FrameX.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50%;
+  max-width: 350px;
+  height: 95%;
+  top: 0;
+  right: 0;
+  margin-top: -20px;
+  z-index: -20;
 }
+
+#doodleO {
+  position: absolute;
+  background-image: url("../assets/FrameO.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50%;
+  max-width: 350px;
+  height: 95%;
+  top: 0;
+  bottom: 20rem;
+  margin-top: -20px;
+  z-index: -20;
+}
+
 
 @keyframes jiggleO {
   from {
@@ -355,11 +387,11 @@ main {
 }
 
 .blue {
-  color: #6573BB;
+  color: #6573bb;
 }
 
 .red {
-  color: #D83E3E;
+  color: #d83e3e;
 }
 
 .blue_highlight.blue_highlight {
@@ -368,4 +400,4 @@ main {
 
 .red_highlight.red_highlight {
   background-color: rgba(249, 145, 145, 0.4);
-} 
+}
