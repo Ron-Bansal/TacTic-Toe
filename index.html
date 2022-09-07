@@ -1,18 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#DEAADC">
-        <title>TacTic-Toe</title>
-        <link rel="stylesheet" href="./src/styles.css">
-        <link rel="manifest" href="./manifest.json">
-        <link rel="apple-touch-icon" href="./assets/logo192.png">
-        <link rel="icon" href="./assets/logo512.png">
-    </head>
-    <body>
-        <h1>TacTic-Toe</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#DEAADC" />
+    <title>TacTic-Toe</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./assets/logo192.png" />
+    <link rel="icon" href="./assets/logo512.png" />
+  </head>
+  <body>
+    <header>
+      <h1>TacTic-Toe</h1>
+    </header>
 
-        <script src="./src/app.js"></script>
-    </body>
+    <div class="banner">
+      <!-- <div class="rules">How to play <span>?</span></div> -->
+      <div id="rules" onclick="toggleRules()">
+        How to play <span>?</span>
+        <div id="rules-content" class="hide-text">
+          <p>just like regular tic-tac-toe but with a little twist:</p>
+          <p>you need <strong>3 out of 5</strong> of your pieces in a square to claim it</p>
+        </div>
+      </div>
+      <div class="reset hidden" onclick="resetGame()">Play Again</div>
+    </div>
+
+    <div class="winner hide-texts">Player 2 is the winner!</div>
+
+    <main>
+      <div class="players">
+        <h4 class="p1">player 1 (X)</h4>
+        <h4 class="p2">player 2 (O)</h4>
+        <span class="turn_pointer hidden">▼</span>
+        <span class="crown hidden"></span>
+      </div>
+
+      <div class="grid">
+        <div class="grid">
+          <div class="row r1">
+            <div value="00" class="box b1"></div>
+            <div value="01" class="box b2"></div>
+            <div value="02" class="box b3"></div>
+          </div>
+          <div class="row r2">
+            <div value="10" class="box b1"></div>
+            <div value="11" class="box b2"></div>
+            <div value="12" class="box b3"></div>
+          </div>
+          <div class="row r3">
+            <div value="20" class="box b1"></div>
+            <div value="21" class="box b2"></div>
+            <div value="22" class="box b3"></div>
+          </div>
+        </div>
+    </main>
+
+    <div class="doodles">
+      <h2 id="doodleO">O</h2>
+      <h2 id="doodleX">X</h2>
+    </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
+    <script src="./src/app.js"></script>
+  </body>
 </html>

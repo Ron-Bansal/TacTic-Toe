@@ -1,14 +1,371 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Ubuntu:wght@400;500;700&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  /* font-family: 'Koulen', cursive; */
+  font-family: "Ubuntu", sans-serif;
+  overflow-x: hidden !important;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    background-color: #F5DFFF;
+  background-color: #f5dfff;
 }
+
+header {
+  background-color: rgba(217, 156, 211, 0.8);
+  text-align: center;
+  width: 100vw;
+}
+
+h1 {
+  font-family: "Koulen", cursive;
+  color: #fcfcfc;
+  font-size: 2.5rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 1400px;
+  width: 85%;
+  margin: 3rem auto;
+  flex-wrap: wrap;
+  /* position: relative; */
+  justify-content: space-evenly;
+
+  /* display: grid;
+  grid-template-columns: [first] 30% auto [last] 30%;
+  grid-template-columns: repeat(auto-fit, [first] 30% auto [last] 30%); */
+}
+
+/* @media screen and (max-width: 1200px) {
+  .banner {
+    grid-template-columns: [first] 30% auto [last] 30%;
+  }
+} */
+
+#rules {
+  border: 2px solid #000;
+  background-color: #fff;
+  box-shadow: 5px 5px 0px #000;
+  padding: 1px 2rem;
+  transform: rotate(-2deg);
+  font-family: "Koulen", cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  float: right;
+  height: fit-content;
+  min-width: 250px;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+#rules:hover {
+  transition: 0.2s ease;
+  background-color: rgba(217, 156, 211, 0.3);
+  transform: rotate(0deg);
+}
+
+#rules > span {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+#rules-content {
+  transition: all 0.2s ease 0.1s;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  /* display: none; */
+  /* display: inline; */
+}
+
+.hide-text {
+  display: none !important;
+}
+
+.winner {
+  font-family: "Koulen", cursive;
+  background: #f3b4e5;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #323232;
+  text-align: center;
+  font-size: 1.7rem;
+  width: fit-content;
+  padding: 1px 4rem;
+  margin: 3rem auto;
+  margin-top: -2rem;
+
+  /* animation: winnerGlow 3s infinite linear alternate-reverse 0.2s; */
+}
+
+@keyframes winnerGlow {
+  from {
+    box-shadow: 8px 8px 0px #323232;
+  }
+  to {
+    box-shadow: 8px 8px 0px #fcfcfc;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .winner {
+    font-size: 1.5rem;
+    padding: 1rem auto;
+    width: 95%;
+  }
+}
+
+.reset {
+  border: 2px solid #000;
+  background-color: #fff;
+  box-shadow: 5px 5px 0px #000;
+  padding: 1px 2rem;
+  transform: rotate(2deg);
+  font-family: "Koulen", cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  float: right;
+  height: fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 1rem;
+  z-index: 99;
+}
+
+.reset:hover {
+  transition: 0.2s ease;
+  background-color: rgba(217, 156, 211, 0.3);
+  transform: rotate(0deg);
+}
+
+main {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  margin-top: 2rem;
+  /* margin-bottom: 5rem; */
+}
+
+.players {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.players > h4 {
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+  /* border: 2px dashed #000; */
+  padding: 5px 15px;
+  width: fit-content;
+}
+
+.p1 {
+  color: #6573bb;
+}
+
+.p2 {
+  color: #d83e3e;
+}
+
+.current-player::before {
+  content: "▼";
+  position: absolute;
+  bottom: 5rem;
+  right: 30%;
+  /* color: #000; */
+}
+
+.turn_pointer {
+  position: absolute !important;
+  left: 25%;
+  /* left: 70%; */
+  /* top: 12px; */
+}
+
+.p1-turn{
+  left: 25%;
+}
+
+.p2-turn{
+  left: 70%;
+}
+
+.crown {
+  background-image: url(../assets/crown-64.png);
+  background-size: cover;
+  position: absolute !important;
+  left: 15%;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 0px;
+}
+
+.p1-win {
+  left: 15%;
+  transform: rotate(-10deg);
+}
+
+.p2-win {
+  left: 78%;
+  transform: rotate(10deg);
+}
+
+.grid {
+  /* height: 600px;
+    width: 600px; */
+  width: 95%;
+  aspect-ratio: 1/1;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.box {
+  border: 1px solid #696969;
+  font-size: 2.3rem;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 33.33%;
+  width: calc(100% / 3);
+  aspect-ratio: 1/1;
+
+  background-color: #f5dfff9b;
+}
+
+@media screen and (max-width: 500px) {
+  .box {
+    font-size: 1.7rem;
+  }
+}
+
+.box:hover {
+  cursor: pointer;
+  /* background-color: rgba(190, 184, 190, 0.4); */
+  background-color: rgba(217, 156, 211, 0.3);
+}
+
+.r1 > .box {
+  border-top: none;
+}
+
+.r3 > .box {
+  border-bottom: none;
+}
+
+.b1 {
+  border-left: none;
+}
+
+.b3 {
+  border-right: none;
+}
+
+/* .box {
+    border: 1px solid #696969;
+} */
+
+.doodles {
+  max-width: 1400px;
+}
+
+#doodleO {
+  position: absolute;
+  height: fit-content ;
+  font-size: 25rem;
+  top: 77px;
+  color: rgba(249, 145, 145, 0.4);
+  transform: rotate(-15deg);
+  left: -100px;
+  bottom: 10px;
+  z-index: -999;
+
+  /* animation: jiggleO 2s infinite linear alternate-reverse 0s; */
+}
+
+#doodleX {
+  position: absolute;
+  font-size: 25rem;
+  top: 77px;
+  color: rgba(135, 208, 223, 0.35);
+  transform: rotate(15deg);
+  right: -60px;
+  top: -13rem;
+  z-index: -999;
+  
+  /* animation: jiggleX 1s infinite linear alternate-reverse 0.2s; */
+}
+
+@keyframes jiggleO {
+  from {
+    transform: rotate(-25deg) scale(1);
+  }
+  to {
+    transform: rotate(-5deg) scale(1.1);
+  }
+}
+
+@keyframes jiggleX {
+  from {
+    transform: rotate(15deg) scale(1);
+  }
+  to {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+.blue {
+  color: #6573BB;
+}
+
+.red {
+  color: #D83E3E;
+}
+
+.blue_highlight.blue_highlight {
+  background-color: rgba(135, 208, 223, 0.35);
+}
+
+.red_highlight.red_highlight {
+  background-color: rgba(249, 145, 145, 0.4);
+} 
