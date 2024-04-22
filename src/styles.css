@@ -158,6 +158,10 @@ h1 {
   transform: rotate(0deg);
 }
 
+.white-bg {
+  background-color: #fff !important;
+}
+
 main {
   max-width: 600px;
   display: flex;

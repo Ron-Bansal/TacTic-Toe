@@ -31,6 +31,7 @@ function resetGame() {
   currentTurnP1 = false;
   updateTurn();
 
+  winnerBanner.classList.remove("white-bg");
   winnerBanner.classList.add("hide-text");
   crownIcon.classList.add("hidden");
   crownIcon.classList.remove("p1-win");
@@ -270,6 +271,7 @@ function setPlaceholderVictory() {
   boxesArray[6].classList.toggle("blue_highlight");
 
   winnerBanner.classList.remove("hide-text");
+  winnerBanner.classList.add("white-bg");
   winnerBanner.innerHTML = "🡺  Start game  🡸";
   winnerBanner.setAttribute("onclick", "resetGame()");
 
