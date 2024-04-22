@@ -232,66 +232,6 @@ function displayWinner() {
   console.log("HEY WE HAVE A WINNER!" + winner);
 }
 
-function xsetRandomVictory() {
-  const oPositions = [[0, 2, 3, 4, 5, 6, 7], [0, 8], [0, 2, 3, 8], [4, 5]]; 
-  const xPositions = [[1, 8], [2, 3, 4, 5, 6, 7], [4, 5, 6], [2, 6], [2, 4]]; 
-
-  oPositions.forEach(index => {
-    const box = boxesArray[index];
-    const span = document.createElement("span");
-    const piece = document.createTextNode("O");
-
-    span.classList.add("red");
-    span.appendChild(piece);
-    box.appendChild(span);
-  });
-
-  xPositions.forEach(index => {
-    const box = boxesArray[index];
-    const span = document.createElement("span");
-    const piece = document.createTextNode("X");
-
-    span.classList.add("blue");
-    span.appendChild(piece);
-    box.appendChild(span);
-  });
-}
-
-function ysetRandomVictory() {
-  const xPositions = [[1, 8], [2, 3, 4, 5, 6, 7], [4, 5, 6], [2, 6], [2, 4]];
-  const oPositions = [[0, 2, 3, 4, 5, 6, 7], [0, 8], [0, 2, 3, 8], [4, 5]];
-
-  let currentTurnP1 = true;
-
-  for (let i = 0; i < xPositions.length; i++) {
-    const round = xPositions[i];
-    round.forEach(index => {
-      const box = boxesArray[index];
-      const span = document.createElement("span");
-      const piece = document.createTextNode("X");
-
-      span.classList.add("blue");
-      span.appendChild(piece);
-      box.appendChild(span);
-    });
-    currentTurnP1 = false;
-  }
-
-  for (let i = 0; i < oPositions.length; i++) {
-    const round = oPositions[i];
-    round.forEach(index => {
-      const box = boxesArray[index];
-      const span = document.createElement("span");
-      const piece = document.createTextNode("O");
-
-      span.classList.add("red");
-      span.appendChild(piece);
-      box.appendChild(span);
-    });
-    currentTurnP1 = true;
-  }
-}
-
 function setPlaceholderVictory() {
   const boxValues = [
     "OO", // Box 1
