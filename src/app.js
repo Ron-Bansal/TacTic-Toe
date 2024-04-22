@@ -25,7 +25,7 @@ let claimedGridArray = [
 let currentTurnP1 = true;
 // true = p1; false = p2
 
-resetGame();
+// resetGame();
 
 function resetGame() {
   currentTurnP1 = false;
@@ -231,3 +231,112 @@ function displayWinner() {
 
   console.log("HEY WE HAVE A WINNER!" + winner);
 }
+
+function xsetRandomVictory() {
+  const oPositions = [[0, 2, 3, 4, 5, 6, 7], [0, 8], [0, 2, 3, 8], [4, 5]]; 
+  const xPositions = [[1, 8], [2, 3, 4, 5, 6, 7], [4, 5, 6], [2, 6], [2, 4]]; 
+
+  oPositions.forEach(index => {
+    const box = boxesArray[index];
+    const span = document.createElement("span");
+    const piece = document.createTextNode("O");
+
+    span.classList.add("red");
+    span.appendChild(piece);
+    box.appendChild(span);
+  });
+
+  xPositions.forEach(index => {
+    const box = boxesArray[index];
+    const span = document.createElement("span");
+    const piece = document.createTextNode("X");
+
+    span.classList.add("blue");
+    span.appendChild(piece);
+    box.appendChild(span);
+  });
+}
+
+function ysetRandomVictory() {
+  const xPositions = [[1, 8], [2, 3, 4, 5, 6, 7], [4, 5, 6], [2, 6], [2, 4]];
+  const oPositions = [[0, 2, 3, 4, 5, 6, 7], [0, 8], [0, 2, 3, 8], [4, 5]];
+
+  let currentTurnP1 = true;
+
+  for (let i = 0; i < xPositions.length; i++) {
+    const round = xPositions[i];
+    round.forEach(index => {
+      const box = boxesArray[index];
+      const span = document.createElement("span");
+      const piece = document.createTextNode("X");
+
+      span.classList.add("blue");
+      span.appendChild(piece);
+      box.appendChild(span);
+    });
+    currentTurnP1 = false;
+  }
+
+  for (let i = 0; i < oPositions.length; i++) {
+    const round = oPositions[i];
+    round.forEach(index => {
+      const box = boxesArray[index];
+      const span = document.createElement("span");
+      const piece = document.createTextNode("O");
+
+      span.classList.add("red");
+      span.appendChild(piece);
+      box.appendChild(span);
+    });
+    currentTurnP1 = true;
+  }
+}
+
+function setPlaceholderVictory() {
+  const boxValues = [
+    "OO", // Box 1
+    "XO", // Box 2
+    "OXOXX", // Box 3
+    "OXO", // Box 4
+    "OXXOX", // Box 5
+    "XXO", // Box 6
+    "OXXX", // Box 7
+    "OXXO", // Box 8
+    "XOO" // Box 9
+  ];
+
+  boxesArray.forEach((box, index) => {
+    const pieces = boxValues[index];
+    const piecesArray = pieces.split("");
+
+    piecesArray.forEach(piece => {
+      const span = document.createElement("span");
+      const pieceText = document.createTextNode(piece);
+
+      if (piece === "X") {
+        span.classList.add("blue");
+      } else {
+        span.classList.add("red");
+      }
+
+      span.appendChild(pieceText);
+      box.appendChild(span);
+      // box.innerText += piece;
+    });
+  });
+
+  boxesArray[2].classList.toggle("blue_highlight");
+  boxesArray[4].classList.toggle("blue_highlight");
+  boxesArray[6].classList.toggle("blue_highlight");
+
+  winnerBanner.classList.remove("hide-text");
+  winnerBanner.innerHTML = "🡺  Start game  🡸";
+  winnerBanner.setAttribute("onclick", "resetGame()");
+
+  crownIcon.classList.add("p1-win");
+  crownIcon.classList.remove("hidden");
+  
+  turnPointer.classList.add("hidden");
+}
+
+setPlaceholderVictory()

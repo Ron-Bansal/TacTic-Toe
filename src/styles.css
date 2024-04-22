@@ -113,6 +113,7 @@ h1 {
   padding: 1px 4rem;
   margin: 3rem auto;
   margin-top: -2rem;
+  cursor: pointer;
 
   /* animation: winnerGlow 3s infinite linear alternate-reverse 0.2s; */
 }
