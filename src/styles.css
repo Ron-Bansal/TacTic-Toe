@@ -59,16 +59,17 @@ h1 {
   border: 2px solid #000;
   background-color: #fff;
   box-shadow: 5px 5px 0px #000;
-  padding: 1px 2rem;
+  padding: 1px 1.2rem;
   transform: rotate(-2deg);
   font-family: "Koulen", cursive;
   font-size: 1.2rem;
   cursor: pointer;
   float: right;
   height: fit-content;
-  min-width: 250px;
+  min-width: 265px;
   margin-right: auto;
   margin-top: 1rem;
+  position: relative;
 }
 
 #rules:hover {
@@ -94,6 +95,8 @@ h1 {
   font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   margin-bottom: 1rem;
+  position: absolute;
+  left: 2px;
   /* display: none; */
   /* display: inline; */
 }
@@ -167,8 +170,40 @@ main {
   display: flex;
   flex-direction: column;
   margin: 0px auto;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-top: 5rem;
   /* margin-bottom: 5rem; */
+}
+
+.game-mode {
+  display: flex;
+  margin: 0 auto;
+  gap: 1.5rem;
+  width: fit-content;
+}
+
+.game-mode-btn {
+  border: 2px solid #000;
+  background-color: #fff;
+  box-shadow: 5px 5px 0px #000;
+  padding: 1px 2rem;
+  font-family: "Koulen", cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  /* margin-left: auto; */
+  margin-top: 1rem;
+  z-index: 99;
+}
+
+.game-mode-btn:hover {
+  transition: 0.2s ease;
+  background-color: rgba(217, 156, 211, 0.6);
+}
+
+.selected-mode {
+  background-color: rgba(217, 156, 211, 0.35);
 }
 
 .players {
@@ -199,7 +234,7 @@ main {
 .current-player::before {
   content: "▼";
   position: absolute;
-  bottom: 5rem;
+  bottom: 2rem;
   right: 30%;
   /* color: #000; */
 }
@@ -368,7 +403,6 @@ main {
   z-index: -20;
 }
 
-
 @keyframes jiggleO {
   from {
     transform: rotate(-25deg) scale(1);
@@ -405,4 +439,70 @@ main {
 
 .red_highlight.red_highlight {
   background-color: rgba(249, 145, 145, 0.4);
+}
+
+footer {
+  margin: 0 auto;
+  margin-top: 8rem;
+  /* padding: 2rem; */
+  /* padding: 0.5rem 0.5rem; */
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  /* border-top: 0.3px solid #6969699a; */
+  color: #696969;
+}
+
+.footer-container-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  text-align: left;
+  margin-bottom: -10px;
+}
+
+.footer-container-top > p > strong {
+  font-family: "Koulen", cursive;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  color: #000;
+  margin-right: 5px;
+}
+
+.footer-container-btm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 0.3px solid #6969699a;
+  padding: 0.1rem 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9rem;
+}
+
+.footer-links > a {
+  text-decoration: none;
+}
+
+.footer-admin {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 750px) {
+  .footer-container-btm {
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    margin-bottom: 10px;
+  }
 }

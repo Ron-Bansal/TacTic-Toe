@@ -36,19 +36,27 @@
         <div id="rules-content" class="hide-text">
           <p>Just like regular tic-tac-toe but with a little twist:</p>
           <p>
-            You need <strong>3 out of 5</strong> of your pieces in a square to
+            You need to <strong>place 3 of your pieces</strong> in a square to
             claim it.
           </p>
         </div>
       </div>
-      <div class="reset hidden" onclick="resetGame()">Play Again</div>
+      <div class="reset hidden" onclick="resetGame()">
+        Restart <strong>↺</strong>
+      </div>
     </div>
 
-    <div class="winner hide-text">Player 2 is the winner!</div>
+    <div class="">
+      <div class="winner hide-text">Player 1 is the winner!</div>
 
-    <div class="game-mode">
-      <button id="pvpMode">Player vs Player</button>
-      <button id="aiMode">Player vs Computer</button>
+      <div class="game-mode">
+        <button class="game-mode-btn selected-mode" id="pvpMode">
+          👥 Play Multiplayer
+        </button>
+        <button class="game-mode-btn" id="aiMode">
+          🤖 Play Against Computer
+        </button>
+      </div>
     </div>
 
     <main>
@@ -80,6 +88,38 @@
 
     <h2 id="doodleO"></h2>
     <h2 id="doodleX"></h2>
+
+    <footer>
+      <div class="footer-container-top">
+        <p>
+          <strong>Tactic-Toe</strong>
+          <span>Just like classic Tic-Tac-Toe, but more tactical!</span>
+        </p>
+        <!-- <p>Made with 🤍 from NZ</p> -->
+      </div>
+      <div class="footer-container-btm">
+        <div class="footer-admin">
+          <p>©2024 Tactic-Toe |</p>
+          <p>All rights reserved •</p>
+          <a
+            href="https://docs.google.com/document/d/1Q6kZ2Z-U4V4D8MpHpQE_Bixn_7hnhW6zfyz26IDz9-g/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Privacy Policy</a
+          >
+        </div>
+        <div class="footer-links">
+          <!-- <a href="">📨 Contact (feedback)</a>
+          <a href="">☕ Buy me a coffee</a> -->
+          <a
+            href="https://raunvq.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >💝 Other projects</a
+          >
+        </div>
+      </div>
+    </footer>
 
     <script>
       if ("serviceWorker" in navigator) {

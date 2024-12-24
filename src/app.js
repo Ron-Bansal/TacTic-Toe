@@ -312,14 +312,24 @@ let isAIActive = false;
 let gameOver = false; // Added to stop moves after a winner is declared
 
 document.getElementById("pvpMode").addEventListener("click", () => {
+  gtag("event", "game_mode_selected", {
+    mode: "Player vs Player",
+  });
   isAIActive = false;
   player2Label.textContent = "Player 2 (O)";
+  document.getElementById("pvpMode").classList.add("selected-mode");
+  document.getElementById("aiMode").classList.remove("selected-mode");
   resetGame();
 });
 
 document.getElementById("aiMode").addEventListener("click", () => {
+  gtag("event", "game_mode_selected", {
+    mode: "Player vs Computer",
+  });
   isAIActive = true;
   player2Label.textContent = "Computer (O)";
+  document.getElementById("pvpMode").classList.remove("selected-mode");
+  document.getElementById("aiMode").classList.add("selected-mode");
   resetGame();
 });
 
@@ -344,6 +354,7 @@ function resetGame() {
 
 boxesArray.forEach((box) => {
   box.addEventListener("click", () => {
+    resetBtn.classList.remove("hidden");
     if (gameOver || (isAIActive && !currentTurnP1)) return; // Stop moves if game over or AI's turn
 
     if (!validateMove(box)) return;
@@ -444,7 +455,7 @@ function checkVictory(isSimulated = false) {
   const winner = currentTurnP1
     ? "Player 1"
     : isAIActive
-    ? "Computer"
+    ? "🤖 Computer"
     : "Player 2";
 
   // Check rows
@@ -515,17 +526,30 @@ function checkVictory(isSimulated = false) {
 }
 
 function declareWinner(winner) {
+  gtag("event", "game_outcome", {
+    winner: winner,
+  });
   gameOver = true;
   winnerBanner.innerText = `${winner} is the winner!`;
   winnerBanner.classList.remove("hide-text");
+
+  if (winner === "Player 1") {
+    crownIcon.classList.add("p1-win");
+  } else {
+    crownIcon.classList.add("p2-win");
+  }
+
   crownIcon.classList.remove("hidden");
   turnPointer.classList.add("hidden");
   resetBtn.classList.remove("hidden");
 }
 
 function declareDraw() {
+  gtag("event", "game_outcome", {
+    result: "Draw",
+  });
   gameOver = true;
-  winnerBanner.innerText = "It's a draw!";
+  winnerBanner.innerText = "It's a draw 😐";
   winnerBanner.classList.remove("hide-text");
   turnPointer.classList.add("hidden");
   resetBtn.classList.remove("hidden");
@@ -564,53 +588,52 @@ function highlightWinningDiagonal(type) {
   }
 }
 
-
 function setPlaceholderVictory() {
-    const boxValues = [
-      "OO", // Box 1
-      "XO", // Box 2
-      "OXOXX", // Box 3
-      "OXO", // Box 4
-      "OXXOX", // Box 5
-      "XXO", // Box 6
-      "OXXX", // Box 7
-      "OXXO", // Box 8
-      "XOO" // Box 9
-    ];
-  
-    boxesArray.forEach((box, index) => {
-      const pieces = boxValues[index];
-      const piecesArray = pieces.split("");
-  
-      piecesArray.forEach(piece => {
-        const span = document.createElement("span");
-        const pieceText = document.createTextNode(piece);
-  
-        if (piece === "X") {
-          span.classList.add("blue");
-        } else {
-          span.classList.add("red");
-        }
-  
-        span.appendChild(pieceText);
-        box.appendChild(span);
-        // box.innerText += piece;
-      });
+  const boxValues = [
+    "OO", // Box 1
+    "XO", // Box 2
+    "OXOXX", // Box 3
+    "OXO", // Box 4
+    "OXXOX", // Box 5
+    "XXO", // Box 6
+    "OXXX", // Box 7
+    "OXXO", // Box 8
+    "XOO", // Box 9
+  ];
+
+  boxesArray.forEach((box, index) => {
+    const pieces = boxValues[index];
+    const piecesArray = pieces.split("");
+
+    piecesArray.forEach((piece) => {
+      const span = document.createElement("span");
+      const pieceText = document.createTextNode(piece);
+
+      if (piece === "X") {
+        span.classList.add("blue");
+      } else {
+        span.classList.add("red");
+      }
+
+      span.appendChild(pieceText);
+      box.appendChild(span);
+      // box.innerText += piece;
     });
-  
-    boxesArray[2].classList.toggle("blue_highlight");
-    boxesArray[4].classList.toggle("blue_highlight");
-    boxesArray[6].classList.toggle("blue_highlight");
-  
-    winnerBanner.classList.remove("hide-text");
-    winnerBanner.classList.add("white-bg");
-    winnerBanner.innerHTML = "🡺  Start game  🡸";
-    winnerBanner.setAttribute("onclick", "resetGame()");
-  
-    crownIcon.classList.add("p1-win");
-    crownIcon.classList.remove("hidden");
-  
-    turnPointer.classList.add("hidden");
-  }
-  
-  setPlaceholderVictory()
+  });
+
+  boxesArray[2].classList.toggle("blue_highlight");
+  boxesArray[4].classList.toggle("blue_highlight");
+  boxesArray[6].classList.toggle("blue_highlight");
+
+  // winnerBanner.classList.remove("hide-text");
+  // winnerBanner.classList.add("white-bg");
+  // winnerBanner.innerHTML = "🡺  Start game  🡸";
+  winnerBanner.setAttribute("onclick", "resetGame()");
+
+  crownIcon.classList.add("p1-win");
+  crownIcon.classList.remove("hidden");
+
+  turnPointer.classList.add("hidden");
+}
+
+setPlaceholderVictory();
